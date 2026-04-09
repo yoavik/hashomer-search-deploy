@@ -1,0 +1,32 @@
+itunot-testing.schwarz-info.com {
+	# --- API Endpoints (3 services + 1 test) ---
+
+	# 1. Search API: POST /api/search
+	handle /api/search* {
+		reverse_proxy search:8000
+	}
+
+	# 2. Embed API: POST /api/embed/embed-query, /api/embed/embed-texts, /api/embed/rerank
+	handle /api/embed/* {
+		uri strip_prefix /api/embed
+		reverse_proxy embed:8000
+	}
+
+	# 3. Index API: POST /api/index/index
+	handle /api/index/* {
+		uri strip_prefix /api/index
+		reverse_proxy index:8000
+	}
+
+	# Test endpoint: GET /api/health
+	handle /api/health {
+		reverse_proxy search:8000
+	}
+
+	# Frontend
+	handle {
+		root * /srv
+		file_server
+		try_files {path} /index.html
+	}
+}

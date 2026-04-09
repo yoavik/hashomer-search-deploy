@@ -1,0 +1,8 @@
+# Database management dependencies (optional, for programmatic access)
+# Primary setup uses psql or Supabase Dashboard.
+#
+# Setup:
+#   python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt
+
+supabase>=2.0.0
+psycopg2-binary>=2.9.0

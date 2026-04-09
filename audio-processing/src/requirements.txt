@@ -1,0 +1,10 @@
+# Audio segmentation service dependencies (inside Docker)
+torch>=2.0.0
+torchaudio>=2.0.0
+pydub>=0.25.1
+numpy>=1.24.0
+boto3>=1.34.0
+
+# Better broadcast classification (optional — uses TF, larger image)
+# inaSpeechSegmenter>=0.7.0
+# tensorflow>=2.12.0

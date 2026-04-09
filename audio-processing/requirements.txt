@@ -1,0 +1,12 @@
+# Audio processing local venv dependencies
+# For local testing; RunPod uses src/requirements.txt inside Docker.
+#
+# Setup:
+#   python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt
+# System dependency: ffmpeg (sudo apt-get install -y ffmpeg)
+
+torch>=2.0.0
+torchaudio>=2.0.0
+pydub>=0.25.1
+numpy>=1.24.0
+boto3>=1.34.0

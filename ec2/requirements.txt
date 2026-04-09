@@ -1,0 +1,8 @@
+# EC2 host-level dependencies (for pipeline trigger on host)
+# Docker services have their own requirements in src/*/requirements.txt
+#
+# Setup:
+#   python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt
+
+boto3>=1.34.0
+requests>=2.31.0

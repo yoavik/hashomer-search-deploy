@@ -1,0 +1,7 @@
+# Pipeline trigger dependencies (runs on EC2 host)
+#
+# Setup:
+#   python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt
+
+boto3>=1.34.0
+requests>=2.31.0
