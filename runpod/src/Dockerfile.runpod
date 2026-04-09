@@ -1,3 +1,4 @@
+# CUDA 11.8 for RunPod GPU driver compat (driver 12080)
 FROM pytorch/pytorch:2.1.0-cuda11.8-cudnn8-runtime
 
 WORKDIR /app
