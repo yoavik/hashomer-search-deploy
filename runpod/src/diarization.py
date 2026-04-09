@@ -39,7 +39,7 @@ def load_pyannote_pipeline(model_name: str = DIARIZATION_MODEL, device: str | No
         raise RuntimeError("HF_TOKEN is required to load the pyannote diarization model.")
 
     huggingface_hub.login(token=HF_TOKEN)
-    _pipeline = Pipeline.from_pretrained(model_name)
+    _pipeline = Pipeline.from_pretrained(model_name, token=HF_TOKEN)
 
     _device = device
     if _device is None:
