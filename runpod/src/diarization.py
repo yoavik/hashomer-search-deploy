@@ -38,8 +38,19 @@ def load_pyannote_pipeline(model_name: str = DIARIZATION_MODEL, device: str | No
     if not HF_TOKEN:
         raise RuntimeError("HF_TOKEN is required to load the pyannote diarization model.")
 
+    # PyTorch 2.6 changed torch.load default to weights_only=True,
+    # which breaks loading pyannote model checkpoints.
+    # Monkey-patch to restore old behavior for model loading.
+    _original_torch_load = torch.load
+    torch.load = lambda *args, **kwargs: _original_torch_load(
+        *args, **{**kwargs, 'weights_only': False}
+    )
+
     huggingface_hub.login(token=HF_TOKEN)
     _pipeline = Pipeline.from_pretrained(model_name, use_auth_token=HF_TOKEN)
+
+    # Restore original torch.load
+    torch.load = _original_torch_load
 
     _device = device
     if _device is None:
